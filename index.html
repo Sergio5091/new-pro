@@ -1,734 +1,1795 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>SUCRIVOIRE – Finalisation de Candidature</title>
-  <link rel="stylesheet" href="petroci-recrutement.css" />
-</head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>Cargill Côte d'Ivoire – Finalisation de Candidature</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   CARGILL — Design corporate
+   Vert #237E4D (couleur principale)
+   Noir #1A1A1A (texte/structure)
+   ============================================= */
+:root {
+  --pri:       #237E4D;
+  --pri-m:     #1B6B3F;
+  --pri-l:     #E8F5EE;
+  --pri-ll:    #F3FAF6;
+  --pri-rgb:   35, 126, 77;
 
+  --red:       #1A1A1A;
+  --red-d:     #000000;
+  --red-l:     #F5F5F5;
+
+  --gold:      #D97706;
+  --gold-l:    #FFFBEB;
+
+  --green:     #059669;
+  --green-l:   #ECFDF5;
+
+  --err:       #DC2626;
+  --err-l:     #FEF2F2;
+
+  --white:     #FFFFFF;
+  --bg:        #F4F6F9;
+  --bg2:       #EDF0F4;
+  --g1:        #F8FAFC;
+  --g2:        #DDE3ED;
+  --g3:        #94A3B8;
+  --g4:        #64748B;
+  --g5:        #475569;
+  --g6:        #1A1A1A;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow:    0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,.1), 0 2px 8px rgba(0,0,0,.06);
+
+  --r:    10px;
+  --r2:   14px;
+  --r3:   18px;
+  --gray-4: #64748B;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--g5);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, var(--pri) 0%, #1B6B3F 100%);
+  padding: 0 20px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(var(--pri-rgb),.3);
+}
+.header-logo-wrap {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,.15);
+  border: 1.5px solid rgba(255,255,255,.3);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  padding: 5px;
+  overflow: hidden;
+}
+.header-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+/* Fallback logo Cargill en SVG inline si l'image est absente */
+.header-logo-wrap .logo-fallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+}
+.header-text { flex: 1; }
+.header-text h1 {
+  font-size: 16px; font-weight: 800;
+  color: var(--white); line-height: 1.1;
+  letter-spacing: -.2px;
+}
+.header-text p {
+  font-size: 10px;
+  color: rgba(255,255,255,.7);
+  margin-top: 2px; font-weight: 500;
+}
+.header-pill {
+  background: rgba(255,255,255,.2);
+  color: var(--white);
+  font-size: 10px; font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,.3);
+  white-space: nowrap;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* ANIMATIONS */
+.page { display: none; }
+.page.active { display: block; animation: slideUp .4s cubic-bezier(.16,1,.3,1) both; }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* HOME PAGE */
+.home-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 28px 16px 72px;
+}
+.hero-banner {
+  background: linear-gradient(145deg, var(--pri) 0%, #1B6B3F 60%, #14532D 100%);
+  border-radius: var(--r3);
+  padding: 32px 24px 28px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(35,126,77,.35), 0 2px 8px rgba(0,0,0,.12);
+}
+.hero-banner::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: rgba(255,255,255,.04);
+  border-radius: 50%;
+}
+.hero-banner::after {
+  content: '';
+  position: absolute; bottom: -60px; left: -30px;
+  width: 180px; height: 180px;
+  background: rgba(255,255,255,.03);
+  border-radius: 50%;
+}
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.12);
+  color: #A7F3D0;
+  font-size: 11px; font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  border: 1.5px solid rgba(167,243,208,.25);
+  letter-spacing: .3px;
+  position: relative; z-index: 1;
+}
+.hero-chip svg { width: 12px; height: 12px; }
+.hero-banner h2 {
+  font-size: 24px; font-weight: 900;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.2; letter-spacing: -.4px;
+  position: relative; z-index: 1;
+}
+.hero-banner h2 span { color: #A7F3D0; font-size: 20px; }
+.hero-banner p {
+  font-size: 13px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.7;
+  max-width: 380px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.hc {
+  background: var(--white);
+  border: 1.5px solid var(--g2);
+  border-radius: var(--r2);
+  padding: 14px;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .15s;
+}
+.hc:active { transform: scale(.98); }
+.hc-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hc-icon.red  { background: var(--pri-l); }
+.hc-icon.gold { background: var(--gold-l); }
+.hc-icon svg  { width: 20px; height: 20px; }
+.hc-icon.red svg  { color: var(--pri); }
+.hc-icon.gold svg { color: var(--gold); }
+.hc-label { font-size: 10px; color: var(--g3); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.hc-val   { font-size: 14px; font-weight: 700; color: var(--g6); margin-top: 2px; }
+
+.btn-start {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 17px;
+  background: linear-gradient(135deg, var(--pri) 0%, #1B6B3F 100%);
+  color: var(--white);
+  font-size: 15px; font-weight: 700;
+  border: none;
+  border-radius: var(--r2);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s;
+  font-family: inherit;
+  letter-spacing: .2px;
+  box-shadow: 0 4px 16px rgba(var(--pri-rgb),.3), 0 1px 4px rgba(0,0,0,.1);
+}
+.btn-start:active {
+  background: linear-gradient(135deg, #1B6B3F 0%, #14532D 100%);
+  transform: scale(.98);
+  box-shadow: 0 2px 8px rgba(var(--pri-rgb),.2);
+}
+.btn-start svg { width: 18px; height: 18px; }
+
+.home-note {
+  text-align: center;
+  font-size: 11px; color: var(--g3);
+  margin-top: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  font-weight: 500;
+}
+.home-note svg { width: 12px; height: 12px; }
+
+/* STEPPER */
+.stepper-bar {
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--g2);
+  padding: 14px 16px 12px;
+  position: sticky;
+  top: 64px;
+  z-index: 90;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.stepper-track {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 280px; margin: 0 auto 10px;
+  position: relative;
+}
+.stepper-track::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 20px; right: 20px;
+  height: 2px; background: var(--g2);
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+.s-dot {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--g1); color: var(--g3);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+  transition: all .3s cubic-bezier(.34,1.56,.64,1);
+  border: 2px solid var(--g2);
+  box-shadow: var(--shadow-sm);
+}
+.s-dot.done {
+  background: var(--green); color: var(--white);
+  border-color: var(--green);
+  box-shadow: 0 2px 8px rgba(5,150,105,.25);
+}
+.s-dot.active {
+  background: linear-gradient(135deg, var(--pri) 0%, var(--pri-m) 100%);
+  color: var(--white); border-color: var(--pri);
+  box-shadow: 0 2px 10px rgba(var(--pri-rgb),.35);
+  transform: scale(1.1);
+}
+.prog-rail {
+  height: 4px; background: var(--g2);
+  border-radius: 4px;
+  max-width: 280px; margin: 0 auto;
+  overflow: hidden;
+}
+.prog-fill {
+  height: 4px;
+  background: linear-gradient(90deg, var(--pri) 0%, var(--pri-m) 100%);
+  border-radius: 4px;
+  transition: width .45s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 8px rgba(var(--pri-rgb),.35);
+}
+.step-caption {
+  text-align: center;
+  font-size: 11px; color: var(--g4);
+  margin-top: 8px; font-weight: 600;
+  letter-spacing: .2px;
+}
+
+/* FORM CONTAINER */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 16px 72px;
+}
+.step-panel { display: none; }
+.step-panel.active { display: block; animation: slideUp .35s cubic-bezier(.16,1,.3,1) both; }
+
+.panel-head {
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-bottom: 24px; padding-bottom: 18px;
+  border-bottom: 2px solid var(--g2);
+}
+.panel-head-icon {
+  width: 44px; height: 44px;
+  background: var(--pri-l);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(var(--pri-rgb),.15);
+}
+.panel-head-icon svg { width: 22px; height: 22px; color: var(--pri); }
+.panel-head-text h3 {
+  font-size: 18px; font-weight: 800;
+  color: var(--g6); letter-spacing: -.3px;
+}
+.panel-head-text p {
+  font-size: 12px; color: var(--g4);
+  margin-top: 3px; line-height: 1.5;
+}
+
+.field-group { margin-bottom: 18px; }
+.field-group label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; color: var(--g5);
+  margin-bottom: 7px;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.field-group label svg { width: 13px; height: 13px; color: var(--pri); }
+.req { color: var(--err); margin-left: 2px; }
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 2px solid var(--g2);
+  border-radius: var(--r);
+  font-size: 15px; color: var(--g6);
+  background: var(--white);
+  outline: none;
+  appearance: none; -webkit-appearance: none;
+  transition: border-color .2s, box-shadow .2s;
+  font-family: inherit; font-weight: 500;
+}
+.field-group input::placeholder,
+.field-group textarea::placeholder { color: var(--g3); font-weight: 400; }
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  border-color: var(--pri);
+  box-shadow: 0 0 0 4px rgba(var(--pri-rgb),.08);
+}
+.field-group input.error,
+.field-group textarea.error {
+  border-color: var(--err);
+  background: var(--err-l);
+}
+.field-group textarea { resize: none; line-height: 1.6; }
+.field-hint { font-size: 11px; color: var(--g3); margin-top: 5px; font-weight: 500; }
+
+.error-msg {
+  font-size: 11px; color: var(--err);
+  margin-top: 6px; display: none;
+  align-items: center; gap: 5px;
+  font-weight: 700; letter-spacing: .1px;
+}
+.error-msg.show { display: flex; }
+.error-msg svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.section-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 10px; font-weight: 800; color: var(--g4);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin: 24px 0 16px;
+  padding: 10px 14px;
+  background: var(--bg2);
+  border-radius: 8px;
+  border-left: 3px solid var(--pri);
+}
+.section-label svg { width: 13px; height: 13px; color: var(--pri); }
+
+.info-card {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1.5px solid #F59E0B33;
+  border-radius: var(--r2);
+  padding: 16px 18px; margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.info-card-title {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 800; color: #92400E;
+  text-transform: uppercase; letter-spacing: .5px;
+  margin-bottom: 12px;
+}
+.info-card-title svg { width: 14px; height: 14px; color: var(--gold); }
+.salary-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.salary-item {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 12px 14px; text-align: center;
+  border: 1.5px solid #F59E0B22;
+  box-shadow: var(--shadow-sm);
+}
+.si-label { font-size: 10px; color: #92400E; font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
+.si-val   { font-size: 14px; font-weight: 800; color: #B45309; margin-top: 4px; }
+
+.radio-group { display: flex; flex-direction: column; gap: 10px; }
+.radio-opt {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  border: 2px solid var(--g2);
+  border-radius: var(--r2);
+  cursor: pointer; background: var(--white);
+  transition: all .2s;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--shadow-sm);
+}
+.radio-opt:has(input:checked) {
+  border-color: var(--pri);
+  background: var(--pri-ll);
+  box-shadow: 0 0 0 4px rgba(var(--pri-rgb),.06), var(--shadow-sm);
+}
+.radio-opt input[type=radio] {
+  appearance: none; -webkit-appearance: none;
+  width: 20px; height: 20px;
+  border: 2.5px solid var(--g2);
+  border-radius: 50%; flex-shrink: 0;
+  position: relative; transition: all .2s; cursor: pointer;
+}
+.radio-opt input[type=radio]:checked {
+  border-color: var(--pri);
+  background: var(--pri);
+}
+.radio-opt input[type=radio]:checked::after {
+  content: '';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 7px; height: 7px;
+  background: var(--white); border-radius: 50%;
+}
+.ro-body { display: flex; flex-direction: column; }
+.ro-title { font-size: 14px; font-weight: 700; color: var(--g6); }
+.ro-sub   { font-size: 11px; color: var(--g3); margin-top: 2px; font-weight: 500; }
+
+.cnps-info-box {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1.5px solid #F59E0B44;
+  border-radius: var(--r2);
+  padding: 14px 16px; margin-bottom: 14px;
+  font-size: 13px; color: var(--g5); line-height: 1.7;
+}
+.cnps-info-header {
+  display: flex; align-items: center; gap: 7px;
+  font-weight: 700; color: #92400E; font-size: 12px;
+  text-transform: uppercase; letter-spacing: .4px;
+  margin-bottom: 8px;
+}
+.cnps-info-header svg { width: 15px; height: 15px; color: var(--gold); }
+
+.payment-box {
+  background: var(--white);
+  border: 2px solid var(--g2);
+  border-radius: var(--r2);
+  overflow: hidden; margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.payment-header {
+  background: linear-gradient(135deg, var(--pri) 0%, #1B6B3F 100%);
+  padding: 14px 18px;
+  display: flex; align-items: center; gap: 9px;
+}
+.payment-header svg   { width: 18px; height: 18px; color: var(--white); flex-shrink: 0; }
+.payment-header span  { font-size: 13px; font-weight: 700; color: var(--white); }
+.ph-badge {
+  margin-left: auto;
+  background: rgba(255,255,255,.2);
+  color: var(--white);
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.3);
+  letter-spacing: .3px;
+}
+.payment-body { padding: 16px 18px; }
+.amount-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--pri-l);
+  border-radius: var(--r);
+  padding: 14px 16px; margin-bottom: 12px;
+  border: 1.5px solid rgba(var(--pri-rgb),.1);
+}
+.ar-label { font-size: 11px; color: var(--g4); font-weight: 600; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 2px; }
+.ar-val   { font-size: 26px; font-weight: 900; color: var(--pri); letter-spacing: -.5px; }
+.wave-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg2);
+  border: 2px dashed var(--g2);
+  border-radius: var(--r);
+  padding: 14px 16px; gap: 10px;
+}
+.wl { font-size: 10px; font-weight: 700; color: var(--g3); text-transform: uppercase; letter-spacing: .5px; }
+.wn { font-size: 19px; font-weight: 800; color: var(--g6); letter-spacing: .5px; margin-top: 3px; }
+.copy-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, var(--pri) 0%, #1B6B3F 100%);
+  color: var(--white);
+  border: none; border-radius: var(--r);
+  padding: 10px 15px;
+  font-size: 12px; font-weight: 700;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s; font-family: inherit;
+  box-shadow: 0 2px 8px rgba(var(--pri-rgb),.25);
+}
+.copy-btn:active { transform: scale(.96); opacity: .9; }
+.copy-btn svg { width: 13px; height: 13px; }
+.payment-note {
+  margin-top: 12px;
+  font-size: 11px; color: var(--g4);
+  display: flex; align-items: flex-start; gap: 6px; line-height: 1.6;
+  font-weight: 500;
+}
+.payment-note svg { width: 12px; height: 12px; flex-shrink: 0; margin-top: 2px; color: var(--g3); }
+
+.cnps-err-block {
+  display: none;
+  background: var(--err-l);
+  border: 2px solid #FCA5A5;
+  border-radius: var(--r);
+  padding: 12px 14px; margin-top: 8px;
+  align-items: center; gap: 9px;
+}
+.cnps-err-block.show { display: flex; }
+.cnps-err-block svg { width: 20px; height: 20px; color: var(--err); flex-shrink: 0; }
+.cnps-err-block p   { font-size: 13px; font-weight: 700; color: var(--err); }
+
+.upload-zone {
+  border: 2.5px dashed var(--g2);
+  border-radius: var(--r2);
+  padding: 24px 16px; text-align: center;
+  cursor: pointer; transition: all .2s;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  background: var(--g1);
+}
+.upload-zone:hover, .upload-zone:active {
+  border-color: var(--pri);
+  background: var(--pri-ll);
+}
+.upload-zone.drag {
+  border-color: var(--pri);
+  background: var(--pri-l);
+  box-shadow: 0 0 0 4px rgba(var(--pri-rgb),.07);
+}
+.upload-zone .uz-icon {
+  width: 36px; height: 36px;
+  color: var(--g3); margin: 0 auto 10px;
+  transition: color .2s;
+}
+.upload-zone:hover .uz-icon { color: var(--pri); }
+.upload-zone p { font-size: 12px; color: var(--g4); line-height: 1.7; font-weight: 500; }
+.upload-zone p strong { color: var(--pri); font-weight: 700; }
+.upload-zone input[type=file] { display: none; }
+
+.file-preview {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--green-l);
+  border: 2px solid rgba(5,150,105,.2);
+  border-radius: var(--r);
+  padding: 12px 14px; margin-top: 10px;
+}
+.file-preview svg { width: 20px; height: 20px; color: var(--green); flex-shrink: 0; }
+.fp-info { flex: 1; min-width: 0; }
+.fp-name { font-size: 12px; font-weight: 700; color: var(--g5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fp-size { font-size: 10px; color: var(--g3); margin-top: 2px; }
+.fp-del {
+  width: 28px; height: 28px;
+  background: var(--err-l); border: none; cursor: pointer;
+  color: var(--err); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; -webkit-tap-highlight-color: transparent;
+  transition: background .15s;
+}
+.fp-del:active { background: #FCA5A5; }
+.fp-del svg { width: 13px; height: 13px; }
+.file-img-preview {
+  width: 100%; max-height: 140px; object-fit: contain;
+  border-radius: 8px; margin-top: 10px;
+  border: 2px solid var(--g2);
+}
+
+.check-opt {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 16px;
+  border: 2px solid var(--g2);
+  border-radius: var(--r2);
+  cursor: pointer; margin-bottom: 10px;
+  background: var(--white); transition: all .2s;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--shadow-sm);
+}
+.check-opt:has(input:checked) {
+  border-color: var(--pri);
+  background: var(--pri-ll);
+  box-shadow: 0 0 0 4px rgba(var(--pri-rgb),.06);
+}
+.check-opt input {
+  accent-color: var(--pri);
+  width: 18px; height: 18px;
+  flex-shrink: 0; margin-top: 2px; cursor: pointer;
+}
+.check-opt .ct { font-size: 13px; color: var(--g5); line-height: 1.6; font-weight: 500; }
+.check-opt .ct small { display: block; font-size: 11px; color: var(--g4); margin-top: 4px; }
+
+.recap-card {
+  background: var(--white);
+  border: 1.5px solid var(--g2);
+  border-radius: var(--r2);
+  overflow: hidden; margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+}
+.recap-card-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 16px;
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--g1) 100%);
+  border-bottom: 1.5px solid var(--g2);
+}
+.recap-card-head svg  { width: 15px; height: 15px; color: var(--pri); }
+.recap-card-head span { font-size: 11px; font-weight: 800; color: var(--g5); text-transform: uppercase; letter-spacing: .5px; }
+.recap-card-body { padding: 14px 16px; }
+.recap-row {
+  display: flex; gap: 12px;
+  margin-bottom: 8px; align-items: flex-start;
+}
+.recap-row:last-child { margin-bottom: 0; }
+.rr-lbl, .rr-label {
+  font-size: 10px; font-weight: 700; color: var(--g3);
+  text-transform: uppercase; letter-spacing: .5px;
+  min-width: 95px; flex-shrink: 0; padding-top: 2px;
+}
+.rr-val { font-size: 13px; color: var(--g6); font-weight: 600; line-height: 1.5; }
+
+.nav-btns { display: flex; gap: 10px; padding-top: 24px; }
+.btn-back {
+  flex: 1; padding: 14px;
+  background: var(--white); color: var(--g5);
+  border: 2px solid var(--g2);
+  border-radius: var(--r2);
+  font-size: 14px; font-weight: 600;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit; transition: all .2s;
+  box-shadow: var(--shadow-sm);
+}
+.btn-back:active { border-color: var(--g4); background: var(--bg2); }
+.btn-back svg { width: 16px; height: 16px; }
+
+.btn-next {
+  flex: 2; padding: 14px;
+  background: linear-gradient(135deg, var(--pri) 0%, #1B6B3F 100%);
+  color: var(--white);
+  border: none; border-radius: var(--r2);
+  font-size: 14px; font-weight: 700;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit; transition: all .2s;
+  box-shadow: 0 4px 14px rgba(var(--pri-rgb),.3);
+}
+.btn-next:active {
+  background: linear-gradient(135deg, #1B6B3F 0%, #14532D 100%);
+  transform: scale(.98);
+  box-shadow: 0 2px 6px rgba(var(--pri-rgb),.2);
+}
+.btn-next svg { width: 16px; height: 16px; }
+
+.btn-submit {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--pri) 0%, #1B6B3F 100%);
+  color: var(--white);
+  border: none; border-radius: var(--r2);
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; margin-top: 12px;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s; letter-spacing: .2px;
+  box-shadow: 0 4px 16px rgba(var(--pri-rgb),.3);
+}
+.btn-submit:active {
+  background: linear-gradient(135deg, #1B6B3F 0%, #14532D 100%);
+  transform: scale(.98);
+}
+.btn-submit:disabled { background: var(--g2); cursor: not-allowed; box-shadow: none; }
+.btn-submit svg { width: 18px; height: 18px; }
+
+.conf-note {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-size: 11px; color: var(--g3);
+  padding: 16px 0 0; text-align: center; font-weight: 500;
+}
+.conf-note svg { width: 12px; height: 12px; color: var(--green); }
+
+/* SUCCESS PAGE */
+.success-outer {
+  max-width: 600px; margin: 0 auto;
+  padding: 28px 16px 72px;
+}
+.success-top {
+  background: linear-gradient(145deg, #ECFDF5 0%, #D1FAE5 100%);
+  border: 2px solid rgba(5,150,105,.2);
+  border-radius: var(--r3);
+  padding: 36px 24px 28px; text-align: center;
+  margin-bottom: 16px;
+  position: relative; overflow: hidden;
+}
+.success-top::before {
+  content: '';
+  position: absolute; top: -30px; right: -30px;
+  width: 160px; height: 160px;
+  background: rgba(5,150,105,.08);
+  border-radius: 50%;
+}
+.success-check {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, var(--green) 0%, #047857 100%);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+  box-shadow: 0 6px 24px rgba(5,150,105,.3);
+  position: relative; z-index: 1;
+}
+.success-check svg { width: 34px; height: 34px; color: var(--white); }
+.success-top h2 {
+  font-size: 22px; font-weight: 900;
+  color: #065F46; margin-bottom: 10px;
+  letter-spacing: -.3px; position: relative; z-index: 1;
+}
+.success-top p {
+  font-size: 13px; color: #047857;
+  line-height: 1.7; font-weight: 500;
+  position: relative; z-index: 1;
+}
+.ref-card {
+  background: var(--white);
+  border: 2px solid var(--g2);
+  border-radius: var(--r2);
+  padding: 16px 18px; text-align: center;
+  margin-bottom: 16px; box-shadow: var(--shadow);
+}
+.ref-label {
+  font-size: 10px; font-weight: 700; color: var(--g3);
+  text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px;
+}
+.ref-value {
+  font-size: 16px; font-weight: 800;
+  color: var(--pri); letter-spacing: .5px;
+}
+.next-steps-title {
+  font-size: 10px; font-weight: 800; color: var(--g4);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin: 20px 0 12px;
+  padding: 10px 14px; background: var(--bg2);
+  border-radius: 8px;
+  border-left: 3px solid var(--pri);
+}
+.ns-card {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1.5px solid var(--g2);
+  border-radius: var(--r2);
+  margin-bottom: 10px; box-shadow: var(--shadow-sm);
+}
+.ns-num {
+  width: 30px; height: 30px;
+  background: linear-gradient(135deg, var(--pri) 0%, #1B6B3F 100%);
+  color: var(--white); border-radius: 50%;
+  font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(var(--pri-rgb),.25);
+}
+.ns-body h4 { font-size: 14px; font-weight: 700; color: var(--g6); margin-bottom: 3px; }
+.ns-body p  { font-size: 12px; color: var(--g4); line-height: 1.6; font-weight: 500; }
+.help-card {
+  background: var(--pri-l);
+  border: 1.5px solid rgba(var(--pri-rgb),.15);
+  border-radius: var(--r2);
+  padding: 16px 18px; margin-top: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.help-card h3 {
+  font-size: 13px; font-weight: 800; color: var(--pri);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 7px;
+}
+.help-card h3 svg { width: 15px; height: 15px; }
+.help-row {
+  font-size: 13px; color: var(--g5); font-weight: 500;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.help-row:last-child { margin-bottom: 0; }
+.help-row svg { width: 14px; height: 14px; color: var(--pri); flex-shrink: 0; }
+.btn-home-back {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--g6) 0%, #000000 100%);
+  color: var(--white); border: none; border-radius: var(--r2);
+  font-size: 14px; font-weight: 700;
+  cursor: pointer; margin-top: 16px;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+}
+.btn-home-back:active { opacity: .85; transform: scale(.98); }
+.btn-home-back svg { width: 16px; height: 16px; }
+
+.spinner {
+  display: inline-block;
+  width: 17px; height: 17px;
+  border: 2.5px solid rgba(255,255,255,.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.toast {
+  position: fixed;
+  bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(70px);
+  background: var(--g6); color: var(--white);
+  padding: 10px 20px; border-radius: 30px;
+  font-size: 13px; font-weight: 600;
+  transition: transform .35s cubic-bezier(.16,1,.3,1);
+  z-index: 999; white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+@media (min-width: 640px) {
+  header { padding: 0 32px; height: 68px; }
+  .stepper-bar { top: 68px; }
+  .home-wrap,
+  .form-container,
+  .success-outer { padding-left: 28px; padding-right: 28px; }
+  .hero-banner { padding: 40px 36px 36px; }
+  .hero-banner h2 { font-size: 30px; }
+  .hero-banner h2 span { font-size: 24px; }
+  .home-cards { grid-template-columns: repeat(4, 1fr); }
+  .nav-btns { justify-content: flex-end; }
+  .btn-back { flex: none; width: 140px; }
+  .btn-next { flex: none; width: 200px; }
+}
+</style>
+</head>
 <body>
 
-  <header>
-    <img
-      src="image/logo.jpeg"
-      alt="SUCRIVOIRE" />
-    <div class="htext">
-      <h1>SUCRIVOIRE</h1>
-      <p>Société Sucrière de Côte d'Ivoire</p>
+<!-- HEADER -->
+<header>
+  <div class="header-logo-wrap">
+    <!-- Logo Cargill. Remplacer par image/cargill.png si disponible.
+         Le SVG inline ci-dessous est un fallback (feuille stylisée verte/blanche). -->
+    <img src="./ca.png" alt="Cargill"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+    <div class="logo-fallback" style="display:none">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C7 4 4 8 4 13c0 5 4 9 8 9s8-4 8-9c0-5-3-9-8-11z" fill="rgba(255,255,255,.15)"/>
+        <path d="M12 21V9"/>
+        <path d="M12 13c-2-1-4-1-5 0M12 17c-2-1-4-1-5 0M12 11c2-1 4-1 5 0M12 15c2-1 4-1 5 0"/>
+      </svg>
     </div>
-    <span class="badge">Recrutement</span>
-  </header>
+  </div>
+  <div class="header-text">
+    <h1>Cargill</h1>
+    <p>Côte d'Ivoire – Nourrir le monde en toute sécurité</p>
+  </div>
+  <span class="header-pill">Recrutement</span>
+</header>
 
-  <!-- ===== PAGE ACCUEIL ===== -->
-  <div id="page-home" class="page active">
-    <div class="home-hero">
-      <div class="home-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
+<!-- PAGE ACCUEIL -->
+<div id="page-home" class="page active">
+  <div class="home-wrap">
+    <div class="hero-banner">
+      <div class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         Candidature présélectionnée
       </div>
-      <h2>Félicitations, vous êtes présélectionné(e)&nbsp;!</h2>
-      <p>Votre candidature a été retenue par la <strong>SUCRIVOIRE</strong> – Société Sucrière de Côte d'Ivoire.</p>
-      <p>Pour finaliser votre pré-enregistrement, veuillez compléter le dossier en ligne ci-dessous.</p>
+      <h2>Félicitations,<br/><span>vous êtes présélectionné(e)&nbsp;!</span></h2>
+      <p>Votre profil a été retenu par <strong style="color:#fff;">Cargill Côte d'Ivoire</strong>, acteur majeur de la transformation du cacao et du commerce agricole depuis 1997. Finalisez votre dossier pour confirmer votre place.</p>
     </div>
-    <button class="btn-primary" onclick="showPage('page-form')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
-        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-        <line x1="9" y1="12" x2="15" y2="12" />
-        <line x1="9" y1="16" x2="15" y2="16" />
-      </svg>
+
+    <button class="btn-start" onclick="showPage('page-form')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
       Accéder au formulaire
     </button>
+
+    <p class="home-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Informations traitées de manière strictement confidentielle
+    </p>
+  </div>
+</div>
+
+<!-- PAGE FORMULAIRE -->
+<div id="page-form" class="page">
+  <div class="stepper-bar">
+    <div class="stepper-track">
+      <div class="s-dot active" id="dot-1">1</div>
+      <div class="s-dot" id="dot-2">2</div>
+      <div class="s-dot" id="dot-3">3</div>
+      <div class="s-dot" id="dot-4">4</div>
+    </div>
+    <div class="prog-rail"><div class="prog-fill" id="prog-fill" style="width:25%"></div></div>
+    <p class="step-caption" id="step-lbl">Étape 1 / 4 — Informations personnelles</p>
   </div>
 
-  <!-- ===== PAGE FORMULAIRE ===== -->
-  <div id="page-form" class="page">
-    <div class="form-container">
+  <div class="form-container">
 
-      <div class="progress-wrap">
-        <div class="progress-steps">
-          <div class="step-dot active" id="dot-1">1</div>
-          <div class="step-dot" id="dot-2">2</div>
-          <div class="step-dot" id="dot-3">3</div>
-          <div class="step-dot" id="dot-4">4</div>
+    <!-- ÉTAPE 1 -->
+    <div class="step-panel active" id="step-1">
+      <div class="panel-head">
+        <div class="panel-head-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-        <div class="prog-bar-bg">
-          <div class="prog-bar-fill" id="prog-fill" style="width:25%"></div>
-        </div>
-        <p class="step-lbl" id="step-lbl">Étape 1 sur 4 — Informations personnelles</p>
-      </div>
-
-      <!-- ÉTAPE 1 -->
-      <div class="step-panel active" id="step-1">
-        <div class="step-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-          Informations personnelles
-        </div>
-        <p class="step-sub">Tous les champs sont obligatoires.</p>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="2" y="5" width="20" height="14" rx="2" />
-              <line x1="2" y1="10" x2="22" y2="10" />
-            </svg>
-            ID Employé <span class="req">*</span>
-          </label>
-          <input type="text" id="employeeId" placeholder="5485123" />
-          <p class="error-msg" id="err-employeeId"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>L'ID employé est requis</p>
-        </div>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            Nom de famille <span class="req">*</span>
-          </label>
-          <input type="text" id="fullName" placeholder="KOUASSI" />
-          <p class="error-msg" id="err-fullName"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>Le nom doit contenir au moins 2 caractères</p>
-        </div>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            Prénom <span class="req">*</span>
-          </label>
-          <input type="text" id="firstName" placeholder="Jean" />
-          <p class="error-msg" id="err-firstName"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>Le prénom doit contenir au moins 2 caractères</p>
-        </div>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.54-.54a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.07 16.92z" />
-            </svg>
-            Téléphone opérationnel <span class="req">*</span>
-          </label>
-          <input type="tel" id="phone" placeholder="+225 07 XX XX XX XX" />
-          <small style="display:block;margin-top:6px;font-size:12px;color:var(--gray-400);">Numéro opérationnel — nous vous contacterons par appel ou SMS à ce numéro.</small>
-          <p class="error-msg" id="err-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>Le téléphone est requis</p>
-        </div>
-
-        <div class="section-sep">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
-          Contact d'urgence
-        </div>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            Nom du contact d'urgence <span class="req">*</span>
-          </label>
-          <input type="text" id="emergencyName" placeholder="Nom complet" />
-          <p class="error-msg" id="err-emergencyName"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>Le nom du contact doit contenir au moins 2 caractères</p>
-        </div>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.54-.54a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.07 16.92z" />
-            </svg>
-            Téléphone d'urgence <span class="req">*</span>
-          </label>
-          <input type="tel" id="emergencyPhone" placeholder="+225 07 XX XX XX XX" />
-          <p class="error-msg" id="err-emergencyPhone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>Le téléphone d'urgence est requis</p>
-        </div>
-
-        <p class="conf-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-          </svg>
-          Vos informations sont traitées de manière strictement confidentielle.
-        </p>
-        <div class="nav-btns">
-          <button class="btn-back" onclick="showPage('page-home')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-            Retour
-          </button>
-          <button class="btn-next" onclick="validateStep1()">
-            Suivant
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
+        <div class="panel-head-text">
+          <h3>Informations personnelles</h3>
+          <p>Tous les champs marqués * sont obligatoires.</p>
         </div>
       </div>
 
-      <!-- ÉTAPE 2 -->
-      <div class="step-panel" id="step-2">
-        <div class="step-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-            <line x1="16" y1="2" x2="16" y2="6" />
-            <line x1="8" y1="2" x2="8" y2="6" />
-            <line x1="3" y1="10" x2="21" y2="10" />
-          </svg>
-          Date de prise de poste
-        </div>
-        <p class="step-sub">Indiquez votre disponibilité et situation de santé.</p>
-
-        <div class="info-box">
-          <strong>Rémunération indicative</strong>
-          <div class="salary-row">
-            <div class="salary-card">
-              <p class="s-label">Indemnité de stage</p>
-              <p class="s-val">40 000 – 80 000 FCFA</p>
-            </div>
-            <div class="salary-card">
-              <p class="s-label">Salaire CDI</p>
-              <p class="s-val">100 000 – 250 000 FCFA</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
-            Problème de santé <span style="font-size:11px;color:var(--gray-400);font-weight:400;">(optionnel)</span>
-          </label>
-          <textarea id="healthIssue" rows="3"
-            placeholder="Décrivez brièvement tout problème de santé pertinent..."></textarea>
-        </div>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            Date de disponibilité <span class="req">*</span>
-          </label>
-          <input type="date" id="availabilityDate" />
-          <p class="error-msg" id="err-availabilityDate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>La date de disponibilité est requise</p>
-        </div>
-
-        <p class="conf-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-          </svg>
-          Vos informations sont traitées de manière strictement confidentielle.
-        </p>
-        <div class="nav-btns">
-          <button class="btn-back" onclick="goToStep(1)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-            Retour
-          </button>
-          <button class="btn-next" onclick="validateStep2()">
-            Suivant
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 3 -->
-      <div class="step-panel" id="step-3">
-        <div class="step-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
-            <polyline points="10 9 9 9 8 9" />
-          </svg>
-          CNPS
-        </div>
-        <p class="step-sub">Informations relatives à votre couverture sociale.</p>
-
-        <div class="field-group">
-          <label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-            Possédez-vous une carte CNPS ? <span class="req">*</span>
-          </label>
-          <div class="radio-group">
-            <label class="radio-opt">
-              <input type="radio" name="hasCnps" id="cnpsOui" value="oui" onchange="toggleCnps()" />
-              <div class="ro-text">
-                <span class="ro-title">Oui, j'ai une carte CNPS</span>
-                <span class="ro-sub">Je possède déjà un numéro CNPS</span>
-              </div>
-            </label>
-            <label class="radio-opt">
-              <input type="radio" name="hasCnps" id="cnpsNon" value="non" onchange="toggleCnps()" />
-              <div class="ro-text">
-                <span class="ro-title">Non, je n'ai pas de carte CNPS</span>
-                <span class="ro-sub">Je dois créer ma carte CNPS</span>
-              </div>
-            </label>
-          </div>
-          <p class="error-msg" id="err-hasCnps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>Veuillez choisir une option</p>
-        </div>
-
-        <!-- OUI -->
-        <div id="cnps-oui-section" style="display:none">
-          <div class="field-group">
-            <label>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="2" y="5" width="20" height="14" rx="2" />
-                <line x1="2" y1="10" x2="22" y2="10" />
-              </svg>
-              Numéro CNPS <span class="req">*</span>
-            </label>
-            <input type="text" id="cnpsNumber" placeholder="12345678" oninput="showCnpsError()" />
-            <div class="cnps-error-block" id="cnps-not-found">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="15" y1="9" x2="9" y2="15" />
-                <line x1="9" y1="9" x2="15" y2="15" />
-              </svg>
-              <p>Numéro CNPS non trouvé dans notre système</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- NON -->
-        <div id="cnps-non-section" style="display:none">
-          <!-- Explication CNPS -->
-          <div
-            style="background:#E0F5FC;border:1.5px solid #0090C8;border-radius:12px;padding:14px 16px;margin-bottom:14px;">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#006090" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              <span style="font-size:13px;font-weight:700;color:#006090;">Pourquoi la carte CNPS est obligatoire
-                ?</span>
-            </div>
-            <p style="font-size:13px;color:#0D2D3D;line-height:1.6;">La <strong>Caisse Nationale de Prévoyance Sociale
-                (CNPS)</strong> est l'organisme qui vous couvre en tant que salarié en Côte d'Ivoire. Elle garantit
-              votre <strong>assurance maladie, retraite et accidents de travail</strong>. Aucun employé ne peut être
-              intégré à SUCRIVOIRE sans être enregistré à la CNPS — c'est une <strong>obligation légale</strong> encadrée
-              par le Code du Travail ivoirien.</p>
-          </div>
-
-          <div class="wave-box">
-            <div class="wave-box-header">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
-                <line x1="1" y1="10" x2="23" y2="10" />
-              </svg>
-              <span>Paiement requis — Création carte CNPS</span>
-            </div>
-            <div class="wave-box-body">
-              <div class="wave-amount">
-                <div>
-                  <p class="wa-label">Montant à payer</p>
-                </div>
-                <p class="wa-val">14 500 FCFA</p>
-              </div>
-              <div class="wave-num-row">
-                <div>
-                  <p class="wn-label">Numéro Wave</p>
-                  <p class="wn-val">+2250151478352</p>
-                </div>
-                <button class="copy-btn" id="copy-btn" onclick="copyNum()">
-                  <svg id="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                  </svg>
-                  <span id="copy-txt">Copier</span>
-                </button>
-              </div>
-              <p class="wave-note">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-                Après le paiement, uploadez la capture de confirmation Wave et votre pièce d'identité ci-dessous.
-              </p>
-            </div>
-          </div>
-
-          <div class="field-group">
-            <label>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
-              Preuve de paiement Wave <span class="req">*</span>
-            </label>
-            <div class="upload-zone" id="zone-cnpsProof" onclick="document.getElementById('cnpsProof').click()"
-              ondragover="dragOver(event,'zone-cnpsProof')" ondragleave="dragLeave('zone-cnpsProof')"
-              ondrop="dropFile(event,'cnpsProof','zone-cnpsProof','preview-cnpsProof')">
-              <svg class="uz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
-              <p>Appuyez pour sélectionner un fichier<br /><strong>JPG ou PNG</strong> — max 5 Mo</p>
-              <input type="file" id="cnpsProof" accept=".jpg,.jpeg,.png"
-                onchange="handleFile(this,'preview-cnpsProof','zone-cnpsProof')" />
-            </div>
-            <div id="preview-cnpsProof"></div>
-            <p class="error-msg" id="err-cnpsProof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>Vous devez ajouter la preuve de paiement de 14 500 FCFA pour continuer.</p>
-          </div>
-
-          <div class="field-group">
-            <label>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="M7 15s1-1 2-1 3 2 4 2 2-1 2-1" />
-                <circle cx="9" cy="10" r="1" />
-                <circle cx="15" cy="10" r="1" />
-              </svg>
-              Pièce d'identité <span class="req">*</span>
-            </label>
-            <div class="upload-zone" id="zone-identityCard" onclick="document.getElementById('identityCard').click()"
-              ondragover="dragOver(event,'zone-identityCard')" ondragleave="dragLeave('zone-identityCard')"
-              ondrop="dropFile(event,'identityCard','zone-identityCard','preview-identityCard')">
-              <svg class="uz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
-              <p>Appuyez pour sélectionner un fichier<br /><strong>JPG ou PNG</strong> — max 5 Mo</p>
-              <input type="file" id="identityCard" accept=".jpg,.jpeg,.png"
-                onchange="handleFile(this,'preview-identityCard','zone-identityCard')" />
-            </div>
-            <div id="preview-identityCard"></div>
-            <p class="error-msg" id="err-identityCard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>Vous devez ajouter votre pièce d'identité pour continuer.</p>
-          </div>
-        </div>
-
-        <div class="nav-btns">
-          <button class="btn-back" onclick="goToStep(2)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-            Retour
-          </button>
-          <button class="btn-next" onclick="validateStep3()">
-            Suivant
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 4 -->
-      <div class="step-panel" id="step-4">
-        <div class="step-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <polyline points="9 11 12 14 22 4" />
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-          </svg>
-          Engagement et Soumission
-        </div>
-        <p class="step-sub">Vérifiez votre dossier avant de soumettre. Ces informations serviront à vous convoquer pour
-          l'entretien.</p>
-
-        <div class="section-sep">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-          </svg>
-          Récapitulatif de votre dossier
-        </div>
-
-        <!-- Recap Identité -->
-        <div class="recap-section">
-          <div class="recap-header">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            <span>Informations personnelles</span>
-          </div>
-          <div class="recap-body" id="recap-identity-body">—</div>
-        </div>
-
-        <!-- Recap Disponibilité -->
-        <div class="recap-section">
-          <div class="recap-header">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            <span>Disponibilité</span>
-          </div>
-          <div class="recap-body" id="recap-avail-body">—</div>
-        </div>
-
-        <!-- Recap CNPS -->
-        <div class="recap-section">
-          <div class="recap-header">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-            <span>CNPS</span>
-          </div>
-          <div class="recap-body" id="recap-cnps-body">—</div>
-        </div>
-
-        <div class="section-sep">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </svg>
-          Confirmations requises
-        </div>
-
-        <label class="check-opt">
-          <input type="checkbox" id="confirmAccuracy" />
-          <div class="ct">
-            Je certifie sur l'honneur que toutes les informations fournies sont exactes et complètes.
-            <small>Toute fausse déclaration pourrait entraîner le rejet définitif de ma candidature.</small>
-          </div>
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          ID Employé <span class="req">*</span>
         </label>
-        <p class="error-msg" id="err-confirmAccuracy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-          </svg>Vous devez confirmer l'exactitude des informations</p>
+        <input type="text" id="employeeId" placeholder="ex : 5485123" />
+        <p class="error-msg" id="err-employeeId">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          L'ID employé est requis
+        </p>
+      </div>
 
-        <label class="check-opt">
-          <input type="checkbox" id="acceptTerms" />
-          <div class="ct">J'accepte les conditions générales d'utilisation de SUCRIVOIRE.</div>
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Nom de famille <span class="req">*</span>
         </label>
-        <p class="error-msg" id="err-acceptTerms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-          </svg>Vous devez accepter les conditions générales</p>
+        <input type="text" id="fullName" placeholder="ex : KOUASSI" />
+        <p class="error-msg" id="err-fullName">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Le nom doit contenir au moins 2 caractères
+        </p>
+      </div>
 
-        <div style="padding:0 0 8px;">
-          <button class="btn-submit" id="btn-submit" onclick="submitForm()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-            Soumettre ma candidature
-          </button>
-        </div>
-        <div class="nav-btns" style="padding-top:0;">
-          <button class="btn-back" onclick="goToStep(3)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-            Retour
-          </button>
-        </div>
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Prénom <span class="req">*</span>
+        </label>
+        <input type="text" id="firstName" placeholder="ex : Jean" />
+        <p class="error-msg" id="err-firstName">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Le prénom doit contenir au moins 2 caractères
+        </p>
+      </div>
+
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.54-.54a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.07 16.92z"/></svg>
+          Téléphone opérationnel <span class="req">*</span>
+        </label>
+        <input type="tel" id="phone" placeholder="+225 07 XX XX XX XX" />
+        <p class="field-hint">Numéro par lequel vous serez contacté(e) par appel ou SMS.</p>
+        <p class="error-msg" id="err-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Le téléphone est requis
+        </p>
+      </div>
+
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Contact d'urgence
+      </div>
+
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Nom du contact d'urgence <span class="req">*</span>
+        </label>
+        <input type="text" id="emergencyName" placeholder="Nom complet" />
+        <p class="error-msg" id="err-emergencyName">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Le nom du contact doit contenir au moins 2 caractères
+        </p>
+      </div>
+
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.54-.54a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.07 16.92z"/></svg>
+          Téléphone d'urgence <span class="req">*</span>
+        </label>
+        <input type="tel" id="emergencyPhone" placeholder="+225 07 XX XX XX XX" />
+        <p class="error-msg" id="err-emergencyPhone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Le téléphone d'urgence est requis
+        </p>
+      </div>
+
+      <p class="conf-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Vos données sont traitées de manière strictement confidentielle.
+      </p>
+
+      <div class="nav-btns">
+        <button class="btn-back" onclick="showPage('page-home')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Retour
+        </button>
+        <button class="btn-next" onclick="validateStep1()">
+          Suivant
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
-  </div>
 
-  <!-- ===== PAGE SUCCÈS ===== -->
-  <div id="page-success" class="page">
-    <div class="success-page">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0090C8" stroke-width="2.5" stroke-linecap="round"
-          stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-      </div>
-      <h2>Candidature envoyée avec succès !</h2>
-      <p class="sp-lead">Merci pour votre intérêt pour la <strong>SUCRIVOIRE</strong>. Votre dossier a bien été reçu et
-        sera traité par notre équipe RH dans les plus brefs délais.</p>
-
-      <div class="ref-box">
-        <p class="rb-label">Référence de votre candidature</p>
-        <p class="rb-val" id="ref-number">SUCRIVOIRE-RECRUT-2026-XXXXXX</p>
-      </div>
-
-      <div class="next-step">
-        <span class="ns-num">1</span>
-        <div class="ns-txt">
-          <h4>Examen de votre dossier</h4>
-          <p>Notre équipe RH vérifie vos informations et documents dans les <strong>48h</strong>.</p>
+    <!-- ÉTAPE 2 -->
+    <div class="step-panel" id="step-2">
+      <div class="panel-head">
+        <div class="panel-head-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
-      </div>
-      <div class="next-step">
-        <span class="ns-num">2</span>
-        <div class="ns-txt">
-          <h4>Convocation à l'entretien</h4>
-          <p>Si votre dossier est validé, vous recevrez une <strong>convocation par appel ou SMS</strong> pour un
-            entretien en présentiel. Assurez-vous que le numéro opérationnel fourni est correct — c'est par ce numéro que nous vous contacterons.</p>
-        </div>
-      </div>
-      <div class="next-step">
-        <span class="ns-num">3</span>
-        <div class="ns-txt">
-          <h4>Intégration</h4>
-          <p>Vous recevrez les modalités ainsi que la date de prise de poste ; vous commencerez à SUCRIVOIRE à la date communiquée.</p>
+        <div class="panel-head-text">
+          <h3>Date de prise de poste</h3>
+          <p>Indiquez votre disponibilité et situation de santé.</p>
         </div>
       </div>
 
-      <div class="contact-box">
-        <h3>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.54-.54a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.07 16.92z" />
-          </svg>
-          Besoin d'aide ?
-        </h3>
-      
-        <p>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-            <polyline points="22,6 12,13 2,6" />
-          </svg>
-          sucrivoireservice@gmail.com
-        </p>
-      
-        <p>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
-          Abidjan, Plateau, Côte d'Ivoire
+      <div class="info-card">
+        <div class="info-card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Rémunération indicative
+        </div>
+        <div class="salary-grid">
+          <div class="salary-item">
+            <div class="si-label">Indemnité de stage</div>
+            <div class="si-val">40 000 – 80 000 FCFA</div>
+          </div>
+          <div class="salary-item">
+            <div class="si-label">Salaire CDI</div>
+            <div class="si-val">100 000 – 250 000 FCFA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Problème de santé
+          <span style="font-size:10px;color:var(--gray-4);font-weight:400;text-transform:none;letter-spacing:0;">(optionnel)</span>
+        </label>
+        <textarea id="healthIssue" rows="3" placeholder="Décrivez brièvement tout problème de santé pertinent..."></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Date de disponibilité <span class="req">*</span>
+        </label>
+        <input type="date" id="availabilityDate" />
+        <p class="error-msg" id="err-availabilityDate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          La date de disponibilité est requise
         </p>
       </div>
 
-      <button class="btn-home" onclick="resetAll()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" />
-        </svg>
-        Retour à l'accueil
+      <p class="conf-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Vos données sont traitées de manière strictement confidentielle.
+      </p>
+
+      <div class="nav-btns">
+        <button class="btn-back" onclick="goToStep(1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Retour
+        </button>
+        <button class="btn-next" onclick="validateStep2()">
+          Suivant
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 -->
+    <div class="step-panel" id="step-3">
+      <div class="panel-head">
+        <div class="panel-head-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="panel-head-text">
+          <h3>Couverture CNPS</h3>
+          <p>Informations relatives à votre protection sociale.</p>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Possédez-vous une carte CNPS ? <span class="req">*</span>
+        </label>
+        <div class="radio-group">
+          <label class="radio-opt">
+            <input type="radio" name="hasCnps" id="cnpsOui" value="oui" onchange="toggleCnps()" />
+            <div class="ro-body">
+              <span class="ro-title">Oui, j'ai une carte CNPS</span>
+              <span class="ro-sub">Je possède déjà un numéro CNPS</span>
+            </div>
+          </label>
+          <label class="radio-opt">
+            <input type="radio" name="hasCnps" id="cnpsNon" value="non" onchange="toggleCnps()" />
+            <div class="ro-body">
+              <span class="ro-title">Non, je n'ai pas de carte CNPS</span>
+              <span class="ro-sub">Je dois créer ma carte CNPS</span>
+            </div>
+          </label>
+        </div>
+        <p class="error-msg" id="err-hasCnps">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Veuillez choisir une option
+        </p>
+      </div>
+
+      <!-- CNPS OUI -->
+      <div id="cnps-oui-section" style="display:none">
+        <div class="field-group">
+          <label>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            Numéro CNPS <span class="req">*</span>
+          </label>
+          <input type="text" id="cnpsNumber" placeholder="12345678" oninput="showCnpsError()" />
+          <div class="cnps-err-block" id="cnps-not-found">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <p>Numéro CNPS non trouvé dans notre système</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CNPS NON -->
+      <div id="cnps-non-section" style="display:none">
+        <div class="cnps-info-box">
+          <div class="cnps-info-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Pourquoi la carte CNPS est obligatoire ?</span>
+          </div>
+          <p>La <strong>Caisse Nationale de Prévoyance Sociale (CNPS)</strong> vous couvre en tant que salarié(e) en Côte d'Ivoire — <strong>assurance maladie, retraite et accidents de travail</strong>. Son obtention est une <strong>obligation légale</strong> encadrée par le Code du Travail ivoirien. Aucun employé ne peut intégrer Cargill sans y être enregistré.</p>
+        </div>
+
+        <div class="payment-box">
+          <div class="payment-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span>Paiement — Création carte CNPS</span>
+            <span class="ph-badge">Wave</span>
+          </div>
+          <div class="payment-body">
+            <div class="amount-row">
+              <div>
+                <div class="ar-label">Montant à payer</div>
+              </div>
+              <div class="ar-val">14 600 FCFA</div>
+            </div>
+            <div class="wave-row">
+              <div class="wave-info">
+                <div class="wl">Numéro Wave</div>
+                <div class="wn">+2250509102064</div>
+              </div>
+              <button class="copy-btn" id="copy-btn" onclick="copyNum()">
+                <svg id="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span id="copy-txt">Copier</span>
+              </button>
+            </div>
+            <p class="payment-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Après paiement, uploadez la capture de confirmation Wave et votre pièce d'identité ci-dessous.
+            </p>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Preuve de paiement Wave <span class="req">*</span>
+          </label>
+          <div class="upload-zone" id="zone-cnpsProof"
+            onclick="document.getElementById('cnpsProof').click()"
+            ondragover="dragOver(event,'zone-cnpsProof')"
+            ondragleave="dragLeave('zone-cnpsProof')"
+            ondrop="dropFile(event,'cnpsProof','zone-cnpsProof','preview-cnpsProof')">
+            <svg class="uz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p>Appuyez pour sélectionner un fichier<br/><strong>JPG ou PNG</strong> — max 5 Mo</p>
+            <input type="file" id="cnpsProof" accept=".jpg,.jpeg,.png" onchange="handleFile(this,'preview-cnpsProof','zone-cnpsProof')" />
+          </div>
+          <div id="preview-cnpsProof"></div>
+          <p class="error-msg" id="err-cnpsProof">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Vous devez ajouter la preuve de paiement de 14 600 FCFA pour continuer.
+          </p>
+        </div>
+
+        <div class="field-group">
+          <label>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15s1-1 2-1 3 2 4 2 2-1 2-1"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+            Pièce d'identité <span class="req">*</span>
+          </label>
+          <div class="upload-zone" id="zone-identityCard"
+            onclick="document.getElementById('identityCard').click()"
+            ondragover="dragOver(event,'zone-identityCard')"
+            ondragleave="dragLeave('zone-identityCard')"
+            ondrop="dropFile(event,'identityCard','zone-identityCard','preview-identityCard')">
+            <svg class="uz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p>Appuyez pour sélectionner un fichier<br/><strong>JPG ou PNG</strong> — max 5 Mo</p>
+            <input type="file" id="identityCard" accept=".jpg,.jpeg,.png" onchange="handleFile(this,'preview-identityCard','zone-identityCard')" />
+          </div>
+          <div id="preview-identityCard"></div>
+          <p class="error-msg" id="err-identityCard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Vous devez ajouter votre pièce d'identité pour continuer.
+          </p>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="btn-back" onclick="goToStep(2)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Retour
+        </button>
+        <button class="btn-next" onclick="validateStep3()">
+          Suivant
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 4 -->
+    <div class="step-panel" id="step-4">
+      <div class="panel-head">
+        <div class="panel-head-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="panel-head-text">
+          <h3>Engagement et Soumission</h3>
+          <p>Vérifiez votre dossier avant de soumettre.</p>
+        </div>
+      </div>
+
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Récapitulatif
+      </div>
+
+      <div class="recap-card">
+        <div class="recap-card-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Informations personnelles</span>
+        </div>
+        <div class="recap-card-body" id="recap-identity-body">—</div>
+      </div>
+
+      <div class="recap-card">
+        <div class="recap-card-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Disponibilité</span>
+        </div>
+        <div class="recap-card-body" id="recap-avail-body">—</div>
+      </div>
+
+      <div class="recap-card">
+        <div class="recap-card-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>CNPS</span>
+        </div>
+        <div class="recap-card-body" id="recap-cnps-body">—</div>
+      </div>
+
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Confirmations requises
+      </div>
+
+      <label class="check-opt">
+        <input type="checkbox" id="confirmAccuracy" />
+        <div class="ct">
+          Je certifie sur l'honneur que toutes les informations fournies sont exactes et complètes.
+          <small>Toute fausse déclaration pourrait entraîner le rejet définitif de ma candidature.</small>
+        </div>
+      </label>
+      <p class="error-msg" id="err-confirmAccuracy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Vous devez confirmer l'exactitude des informations
+      </p>
+
+      <label class="check-opt">
+        <input type="checkbox" id="acceptTerms" />
+        <div class="ct">J'accepte les conditions générales d'utilisation de Cargill.</div>
+      </label>
+      <p class="error-msg" id="err-acceptTerms">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Vous devez accepter les conditions générales
+      </p>
+
+      <button class="btn-submit" id="btn-submit" onclick="submitForm()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Soumettre ma candidature
       </button>
+
+      <div class="nav-btns" style="padding-top:12px;">
+        <button class="btn-back" onclick="goToStep(3)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Retour
+        </button>
+      </div>
     </div>
+
   </div>
+</div>
 
-  <!-- TOAST -->
-  <div class="toast" id="toast"></div>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="petroci-recrutement.js"></script>
+<!-- PAGE SUCCÈS -->
+<div id="page-success" class="page">
+  <div class="success-outer">
+    <div class="success-top">
+      <div class="success-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Candidature envoyée !</h2>
+      <p>Merci pour votre intérêt pour <strong style="color:#074711;">Cargill Côte d'Ivoire</strong>. Votre dossier a bien été reçu et sera traité par notre équipe RH dans les plus brefs délais.</p>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-label">Référence de votre candidature</div>
+      <div class="ref-value" id="ref-number">CARGILL-RECRUT-2026</div>
+    </div>
+
+    <div class="next-steps-title">Prochaines étapes</div>
+
+    <div class="ns-card">
+      <div class="ns-num">1</div>
+      <div class="ns-body">
+        <h4>Examen de votre dossier</h4>
+        <p>Notre équipe RH vérifie vos informations et documents dans les <strong>48h</strong>.</p>
+      </div>
+    </div>
+
+    <div class="ns-card">
+      <div class="ns-num">2</div>
+      <div class="ns-body">
+        <h4>Convocation à l'entretien</h4>
+        <p>Vous recevrez une <strong>convocation par mail</strong> au mail opérationnel fourni.</p>
+      </div>
+    </div>
+
+    <div class="ns-card">
+      <div class="ns-num">3</div>
+      <div class="ns-body">
+        <h4>Intégration Cargill</h4>
+        <p>Vous recevrez les modalités et la date de prise de poste pour commencer votre parcours chez Cargill Côte d'Ivoire.</p>
+      </div>
+    </div>
+
+    <div class="help-card">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.54-.54a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.07 16.92z"/></svg>
+        Si vous ne recevez pas de réponse dans les 48h, contactez-nous par mail à l'adresse suivante :
+      </h3>
+      <div class="help-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        cargill.aide@cargill.com
+      </div>
+      <div class="help-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Abidjan, Yopougon — Côte d'Ivoire
+      </div>
+    </div>
+
+    <button class="btn-home-back" onclick="resetAll()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Retour à l'accueil
+    </button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- EmailJS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+/* =========================================================
+   CARGILL — Logique candidature (tout en un seul fichier)
+   ========================================================= */
+
+const emailJsConfig = {
+  publicKey: 'sEKaFE-IFyxb961_r',
+  serviceId: 'service_jigykyr',
+  templateId: 'template_rctg7dc'
+};
+
+let currentStep = 1;
+let files = { cnpsProof: null, identityCard: null };
+let filesBase64 = { cnpsProof: '', identityCard: '' };
+
+/* ---------- Compression image → base64 ---------- */
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      const MAX = 400;
+      let w = img.width, h = img.height;
+      if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
+      if (h > MAX) { w = Math.round(w * MAX / h); h = MAX; }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      const full = canvas.toDataURL('image/jpeg', 0.25);
+      resolve(full.split(',')[1]);
+    };
+    img.onerror = () => { URL.revokeObjectURL(objectUrl); reject(new Error('Impossible de lire l\'image')); };
+    img.src = objectUrl;
+  });
+}
+
+/* ---------- EmailJS init ---------- */
+if (window.emailjs && emailjs.init) {
+  emailjs.init(emailJsConfig.publicKey);
+} else {
+  console.warn('EmailJS non chargé.');
+}
+
+/* ---------- Navigation ---------- */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
+  const pg = document.getElementById(id);
+  pg.style.display = 'block';
+  requestAnimationFrame(() => { requestAnimationFrame(() => { pg.classList.add('active'); }); });
+  window.scrollTo(0, 0);
+  if (id === 'page-form') goToStep(1);
+}
+
+function goToStep(n) {
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  currentStep = n;
+  updateProg(n);
+  window.scrollTo(0, 0);
+}
+
+function updateProg(n) {
+  const lbls = [
+    '',
+    'Étape 1 sur 4 — Informations personnelles',
+    'Étape 2 sur 4 — Date de prise de poste',
+    'Étape 3 sur 4 — CNPS',
+    'Étape 4 sur 4 — Engagement et soumission'
+  ];
+  document.getElementById('step-lbl').textContent = lbls[n];
+  document.getElementById('prog-fill').style.width = (n * 25) + '%';
+  for (let i = 1; i <= 4; i++) {
+    const d = document.getElementById('dot-' + i);
+    d.classList.remove('active', 'done');
+    if (i < n) d.classList.add('done');
+    else if (i === n) d.classList.add('active');
+  }
+}
+
+/* ---------- Validation helpers ---------- */
+function showErr(id, show, msg) {
+  const el = document.getElementById('err-' + id);
+  const inp = document.getElementById(id);
+  if (!el) return;
+  if (msg) el.childNodes[el.childNodes.length - 1].textContent = msg;
+  if (show) { el.classList.add('show'); if (inp) inp.classList.add('error'); }
+  else { el.classList.remove('show'); if (inp) inp.classList.remove('error'); }
+}
+function val(id) { return (document.getElementById(id) || {}).value || ''; }
+
+/* ---------- Étape 1 ---------- */
+function validateStep1() {
+  let ok = true;
+  const emp = val('employeeId').trim();
+  const fn = val('fullName').trim();
+  const fi = val('firstName').trim();
+  const ph = val('phone').trim();
+  const en = val('emergencyName').trim();
+  const ep = val('emergencyPhone').trim();
+  showErr('employeeId', !emp); if (!emp) ok = false;
+  showErr('fullName', fn.length < 2); if (fn.length < 2) ok = false;
+  showErr('firstName', fi.length < 2); if (fi.length < 2) ok = false;
+  showErr('phone', !ph); if (!ph) ok = false;
+  showErr('emergencyName', en.length < 2); if (en.length < 2) ok = false;
+  showErr('emergencyPhone', !ep); if (!ep) ok = false;
+  if (ok) goToStep(2);
+}
+
+/* ---------- Étape 2 ---------- */
+function validateStep2() {
+  const d = val('availabilityDate');
+  if (!d) { showErr('availabilityDate', true, 'La date de disponibilité est requise'); return; }
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  if (new Date(d) < today) { showErr('availabilityDate', true, 'La date ne peut pas être dans le passé'); return; }
+  showErr('availabilityDate', false);
+  goToStep(3);
+}
+
+/* ---------- Étape 3 — CNPS ---------- */
+function toggleCnps() {
+  const v = document.querySelector('input[name="hasCnps"]:checked')?.value;
+  document.getElementById('cnps-oui-section').style.display = v === 'oui' ? 'block' : 'none';
+  document.getElementById('cnps-non-section').style.display = v === 'non' ? 'block' : 'none';
+  document.getElementById('cnps-not-found').classList.remove('show');
+  showErr('hasCnps', false);
+}
+function showCnpsError() {
+  const v = val('cnpsNumber').trim();
+  const b = document.getElementById('cnps-not-found');
+  if (v.length > 0) b.classList.add('show'); else b.classList.remove('show');
+}
+function validateStep3() {
+  const choice = document.querySelector('input[name="hasCnps"]:checked')?.value;
+  if (!choice) { showErr('hasCnps', true); return; }
+  showErr('hasCnps', false);
+  if (choice === 'oui') { document.getElementById('cnps-not-found').classList.add('show'); return; }
+  let ok = true;
+  if (!files.cnpsProof) { showErr('cnpsProof', true); ok = false; } else showErr('cnpsProof', false);
+  if (!files.identityCard) { showErr('identityCard', true); ok = false; } else showErr('identityCard', false);
+  if (ok) { buildRecap(); goToStep(4); }
+}
+
+/* ---------- Récapitulatif ---------- */
+function buildRecap() {
+  const fn = val('fullName').trim().toUpperCase();
+  const fi = val('firstName').trim();
+  const emp = val('employeeId').trim();
+  const ph = val('phone').trim();
+  const en = val('emergencyName').trim();
+  const ep = val('emergencyPhone').trim();
+
+  document.getElementById('recap-identity-body').innerHTML =
+    row('ID Employé', emp) + row('Nom complet', fi + ' ' + fn) +
+    row('Téléphone opérationnel', ph) + row('Contact urgence', en) +
+    row('Tél. urgence', ep);
+
+  const d = val('availabilityDate');
+  const hi = val('healthIssue').trim();
+  document.getElementById('recap-avail-body').innerHTML =
+    row('Date de prise de poste', d ? new Date(d).toLocaleDateString('fr-FR') : '—') +
+    (hi ? row('Santé', hi) : '');
+
+  const choice = document.querySelector('input[name="hasCnps"]:checked')?.value;
+  const cBody = document.getElementById('recap-cnps-body');
+  if (choice === 'non') {
+    const cnpsThumb = files.cnpsProof
+      ? `<img src="${URL.createObjectURL(files.cnpsProof)}" style="width:100%;max-width:120px;height:80px;object-fit:cover;border-radius:8px;border:1px solid #E5E7EB;display:block;margin-top:4px;" alt="Preuve paiement"/>`
+      : '—';
+    const idThumb = files.identityCard
+      ? `<img src="${URL.createObjectURL(files.identityCard)}" style="width:100%;max-width:120px;height:80px;object-fit:cover;border-radius:8px;border:1px solid #E5E7EB;display:block;margin-top:4px;" alt="Pièce d'identité"/>`
+      : '—';
+    cBody.innerHTML =
+      row('Statut', 'Pas de carte CNPS') +
+      row('Preuve paiement', cnpsThumb) +
+      row("Pièce d'identité", idThumb);
+  } else {
+    cBody.innerHTML = row('Statut', '—');
+  }
+}
+function row(label, val) {
+  return `<div class="recap-row"><span class="rr-label">${label}</span><span class="rr-val">${val}</span></div>`;
+}
+
+/* ---------- Génération référence + params email ---------- */
+function getEmailTemplateParams() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = ''; for (let i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  const refNumber = 'CARGILL-RECRUT-2026-' + code;
+  window._lastRefNumber = refNumber;
+
+  const availRaw = val('availabilityDate');
+  const availFormatted = availRaw ? new Date(availRaw).toLocaleDateString('fr-FR') : 'Non renseigné';
+
+  return {
+    employee_id: val('employeeId').trim(),
+    first_name: val('firstName').trim(),
+    full_name: `${val('firstName').trim()} ${val('fullName').trim().toUpperCase()}`,
+    phone: val('phone').trim(),
+    emergency_name: val('emergencyName').trim(),
+    emergency_phone: val('emergencyPhone').trim(),
+    availability_date: availFormatted,
+    health_issue: val('healthIssue').trim() || 'Aucun',
+    cnps_status: document.querySelector('input[name="hasCnps"]:checked')?.value === 'oui'
+      ? 'Possède une carte CNPS'
+      : 'Pas de carte CNPS — paiement effectué',
+    cnps_proof_name: files.cnpsProof ? files.cnpsProof.name : 'Aucun',
+    identity_card_name: files.identityCard ? files.identityCard.name : 'Aucun',
+    cnps_proof_image: filesBase64.cnpsProof || '',
+    identity_card_image: filesBase64.identityCard || '',
+    submission_date: new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+    ref_number: refNumber
+  };
+}
+
+/* ---------- Envoi email ---------- */
+async function sendApplicationEmail() {
+  if (!window.emailjs || !emailjs.send) throw new Error('EmailJS non disponible.');
+  const jobs = [];
+  if (files.cnpsProof && !filesBase64.cnpsProof)
+    jobs.push(fileToBase64(files.cnpsProof).then(b64 => { filesBase64.cnpsProof = b64; }));
+  if (files.identityCard && !filesBase64.identityCard)
+    jobs.push(fileToBase64(files.identityCard).then(b64 => { filesBase64.identityCard = b64; }));
+  if (jobs.length > 0) await Promise.all(jobs);
+  return emailjs.send(emailJsConfig.serviceId, emailJsConfig.templateId, getEmailTemplateParams());
+}
+
+/* ---------- Soumission ---------- */
+async function submitForm() {
+  let ok = true;
+  if (!document.getElementById('confirmAccuracy').checked) { showErr('confirmAccuracy', true); ok = false; } else showErr('confirmAccuracy', false);
+  if (!document.getElementById('acceptTerms').checked) { showErr('acceptTerms', true); ok = false; } else showErr('acceptTerms', false);
+  if (!ok) return;
+
+  const btn = document.getElementById('btn-submit');
+  const originalBtnHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Envoi en cours...';
+
+  try {
+    const jobs = [];
+    if (files.cnpsProof && !filesBase64.cnpsProof)
+      jobs.push(fileToBase64(files.cnpsProof).then(b64 => { filesBase64.cnpsProof = b64; }));
+    if (files.identityCard && !filesBase64.identityCard)
+      jobs.push(fileToBase64(files.identityCard).then(b64 => { filesBase64.identityCard = b64; }));
+    if (jobs.length > 0) await Promise.all(jobs);
+
+    const params = getEmailTemplateParams();
+    await emailjs.send(emailJsConfig.serviceId, emailJsConfig.templateId, params);
+
+    document.getElementById('ref-number').textContent = params.ref_number;
+    showPage('page-success');
+  } catch (err) {
+    console.error('Erreur envoi EmailJS :', err);
+    showToast('Erreur lors de l\'envoi. Veuillez réessayer.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalBtnHtml;
+  }
+}
+
+/* ---------- Fichiers ---------- */
+function handleFile(input, previewId, zoneId) {
+  const file = input.files[0]; if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { showToast('Fichier trop volumineux (max 5 Mo)'); return; }
+  const key = input.id;
+  files[key] = file;
+  showErr(key, false);
+  renderPreview(file, previewId, key, zoneId);
+
+  const prevEl = document.getElementById(previewId);
+  fileToBase64(file).then(b64 => {
+    filesBase64[key] = b64;
+    const compressed = Math.round((b64.length * 3) / 4 / 1024);
+    const sizeEl = prevEl.querySelector('.fp-size');
+    if (sizeEl) sizeEl.textContent = `Compressé : ~${compressed} Ko`;
+  }).catch(() => showToast('Erreur lors du traitement du fichier.'));
+}
+
+function renderPreview(file, previewId, key, zoneId) {
+  const prev = document.getElementById(previewId);
+  const isImg = /\.(jpg|jpeg|png)$/i.test(file.name);
+  const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+  let imgHtml = '';
+  if (isImg) {
+    const url = URL.createObjectURL(file);
+    imgHtml = `<img src="${url}" class="file-img-preview" alt="Aperçu"/>`;
+  }
+  prev.innerHTML = `<div class="file-preview">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <div class="fp-info">
+      <p class="fp-name">${file.name}</p>
+      <p class="fp-size">${sizeMB} Mo</p>
+    </div>
+    <button class="fp-del" onclick="removeFile('${key}','${previewId}')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>${imgHtml}`;
+}
+
+function removeFile(key, previewId) {
+  files[key] = null;
+  filesBase64[key] = '';
+  document.getElementById(previewId).innerHTML = '';
+  document.getElementById(key).value = '';
+}
+
+function dragOver(e, zoneId) { e.preventDefault(); document.getElementById(zoneId).classList.add('drag'); }
+function dragLeave(zoneId) { document.getElementById(zoneId).classList.remove('drag'); }
+function dropFile(e, inputId, zoneId, previewId) {
+  e.preventDefault(); dragLeave(zoneId);
+  const file = e.dataTransfer.files[0]; if (!file) return;
+  const input = document.getElementById(inputId);
+  const dt = new DataTransfer(); dt.items.add(file); input.files = dt.files;
+  handleFile(input, previewId, zoneId);
+}
+
+/* ---------- Copie numéro Wave ---------- */
+function copyNum() {
+  navigator.clipboard.writeText('+2250509102064').then(() => {
+    const btn = document.getElementById('copy-btn');
+    const txt = document.getElementById('copy-txt');
+    const icon = document.getElementById('copy-icon');
+    btn.style.background = '#1A1A1A';
+    icon.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+    icon.setAttribute('viewBox', '0 0 24 24');
+    txt.textContent = 'Copié !';
+    setTimeout(() => {
+      btn.style.background = '';
+      icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
+      txt.textContent = 'Copier';
+    }, 2000);
+  });
+}
+
+/* ---------- Toast + reset ---------- */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function resetAll() {
+  document.querySelectorAll('input[type=text],input[type=tel],input[type=date],textarea').forEach(el => el.value = '');
+  document.querySelectorAll('input[type=radio],input[type=checkbox]').forEach(el => el.checked = false);
+  document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('show'));
+  document.querySelectorAll('input,select,textarea').forEach(el => el.classList.remove('error'));
+  document.getElementById('cnps-oui-section').style.display = 'none';
+  document.getElementById('cnps-non-section').style.display = 'none';
+  document.getElementById('preview-cnpsProof').innerHTML = '';
+  document.getElementById('preview-identityCard').innerHTML = '';
+  document.getElementById('cnps-not-found').classList.remove('show');
+  files = { cnpsProof: null, identityCard: null };
+  filesBase64 = { cnpsProof: '', identityCard: '' };
+  showPage('page-home');
+}
+
+/* ---------- Init ---------- */
+document.getElementById('availabilityDate').min = new Date().toISOString().split('T')[0];
+document.querySelectorAll('.page').forEach(p => { if (!p.classList.contains('active')) p.style.display = 'none'; });
+</script>
 </body>
-
 </html>
